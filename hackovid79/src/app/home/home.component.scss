@@ -1,0 +1,16 @@
+.home{
+    display: flex;
+    flex-direction: column;
+}
+.filterbox{
+    margin:30px;
+}
+.filters{
+    display: flex;
+    // flex-direction: column;
+    justify-content: space-around;
+
+}
+.filtre{
+    margin: 5px 30px;
+}

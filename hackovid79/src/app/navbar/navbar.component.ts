@@ -9,6 +9,9 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
+  //varaibles 
+  username:string
+
   ngOnInit(): void {
   }
 

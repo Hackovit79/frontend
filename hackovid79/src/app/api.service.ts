@@ -19,6 +19,13 @@ export class ApiService {
     return this.http.post<boolean>(`${env.ApiUrl}/event`,meetup);
   }
 
+  GetMeetups():Observable<Meetup[]>{
+    if (env.ApiEnabled){
+      return this.http.get<Meetup[]>(`${env.ApiUrl}/events`);
+    } else{
+      return this.http.get<Meetup[]>(`/assets/mockup/meetups.json`);
+    }
+  }
 
   
   constructor(private http: HttpClient) { }
