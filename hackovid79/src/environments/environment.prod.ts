@@ -1,3 +1,7 @@
 export const environment = {
-  production: true
+  production: true,
+  ApiEnabled:true,
+
+  ApiUrl:'http://hackovid79/api'
+
 };
