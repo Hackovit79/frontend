@@ -1,1 +1,32 @@
 <p>register works!</p>
+<div class="signup-form">
+    <h1>Create account</h1>
+    <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="username" type="text" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]="password" type="password" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="email" type="email" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="description" type="text"></textarea>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Profile image</mat-label>
+        <input matInput [(ngModel)]="image">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button (click)="registerUser()" color="primary">Create Account</button>
+    <br><br>
+    <a mat-raised-button routerLink="/login">Wait, I already have an account</a>
+</div>
