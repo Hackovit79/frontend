@@ -157,5 +157,8 @@
       }
     }
   },
-  "defaultProject": "hackovid79"
+  "defaultProject": "hackovid79",
+  "cli": {
+    "analytics": "c6f43dd4-8d1f-4a73-a0fa-b0b91b56e7a8"
+  }
 }

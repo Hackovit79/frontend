@@ -1,1 +1,17 @@
 <p>log-in works!</p>
+<div class="login-form">
+    <h1>LogIn</h1>
+    <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="username" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]="password" type="password" required>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button (click)="authUser()" color="primary">LogIn</button>
+    <br><br>
+    <a mat-raised-button routerLink="/register">Don't have an account?</a>
+</div>

@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import {AuthInterceptor} from './services/auth.service'
@@ -20,6 +22,7 @@ import { MomentDateModule } from '@angular/material-moment-adapter';
 import {MatInputModule} from '@angular/material/input'; 
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatSelectModule} from '@angular/material/select'; 
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    FormsModule,
+    MatSelectModule,
+    MatIconModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
