@@ -1,1 +1,32 @@
-<p>event works!</p>
+<div class="meetup-list">
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{meetup.title}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{meetup.categories}}{{meetup.start}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="expansion">
+                <img class="meetup-image" src="http://placekitten.com/500/500" alt="">
+                <img class="meetup-image" src="{{meetup.img}}" alt="">
+                <div class="meetup-info">
+                    <h2>{{meetup.title}}</h2>
+                    <p>{{meetup.description}} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur hic, aspernatur pariatur dolorum minima at perspiciatis quo maxime doloremque ducimus tempora ipsa. Maxime ea illum laborum repellendus libero
+                        quis nihil!</p>
+                    <div class="categories">
+                        <h3>{{meetup.categories}}</h3>
+                        <h4>{{meetup.subcategories}}Subcategoria</h4>
+                    </div>
+                </div>
+                <div class="meetup-info">
+                    <h3>{{meetup.start}}10/05/2015 22:00h</h3>
+                    <h3>{{meetup.links}}Youtube</h3>
+                    <a mat-raised-button href="{{meetup.links}}">Veure ara</a>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

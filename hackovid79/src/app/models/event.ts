@@ -15,5 +15,5 @@ export interface Meetup {
 
 export interface link{
     platform:string,
-    url:string
+    url:string,
 }

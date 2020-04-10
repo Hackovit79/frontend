@@ -1,16 +1,18 @@
-.home{
+.home {
     display: flex;
     flex-direction: column;
 }
-.filterbox{
-    margin:30px;
+
+.filterbox {
+    margin: 30px;
 }
-.filters{
+
+.filters {
     display: flex;
     // flex-direction: column;
     justify-content: space-around;
-
 }
-.filtre{
+
+.filtre {
     margin: 5px 30px;
 }
