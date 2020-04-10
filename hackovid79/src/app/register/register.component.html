@@ -21,11 +21,18 @@
         <textarea matInput [(ngModel)]="description" type="text"></textarea>
     </mat-form-field>
     <br>
-    <mat-form-field appearance="fill">
-        <mat-label>Profile image</mat-label>
-        <input matInput [(ngModel)]="image">
-    </mat-form-field>
-    <br>
+    <div class="container">
+        <input type="file" style="display: none" #fileInput accept="image/*" (change)="onChangeFileInput()" />
+        <button mat-raised-button color="primary" class="file-select-button" (click)="onClickFileInputButton()">
+          <mat-icon>attach_file</mat-icon>
+          Select Image
+        </button>
+        <p class="file-name" *ngIf="!file; else fileName">No image</p>
+        <ng-template #fileName>
+            <p class="file-name">{{ file?.name }}</p>
+        </ng-template>
+    </div>
+    <br><br>
     <button mat-raised-button (click)="registerUser()" color="primary">Create Account</button>
     <br><br>
     <a mat-raised-button routerLink="/login">Wait, I already have an account</a>
