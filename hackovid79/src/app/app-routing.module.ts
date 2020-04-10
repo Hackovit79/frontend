@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
+import { AddMeetupComponent } from './add-meetup/add-meetup.component'
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path: 'user/:name', component: UserComponent },
   {path: 'login', component: LogInComponent },
   {path: 'register', component: RegisterComponent },
+  {path: 'user/:name/addevent', component: AddMeetupComponent},
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'

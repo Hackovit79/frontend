@@ -21,6 +21,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatSelectModule} from '@angular/material/select'; 
 import {MatIconModule} from '@angular/material/icon';
+import { AddMeetupComponent } from './add-meetup/add-meetup.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {MatIconModule} from '@angular/material/icon';
     RegisterComponent,
     UserComponent,
     EventComponent,
-    NavbarComponent
+    NavbarComponent,
+    AddMeetupComponent
   ],
   imports: [
     BrowserModule,
