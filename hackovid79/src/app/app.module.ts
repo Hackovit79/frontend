@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import {AuthInterceptor} from './services/auth.service'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
@@ -43,7 +44,11 @@ import {MatSelectModule} from '@angular/material/select';
     MatButtonModule,
     MatSelectModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi:true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

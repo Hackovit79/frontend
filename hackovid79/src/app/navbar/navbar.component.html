@@ -1,10 +1,10 @@
 <div class="navbar">
-    <span style="cursor: pointer;">Cartellera</span>
+    <span style="cursor: pointer;" (click)="goHome">Cartellera</span>
 
     <div class="userlogo">
-        <div style="cursor: pointer;">
+        <div style="cursor: pointer;" (click)="goUser()">
             <span>{{username}}</span>
-            <img src="/assets/icons/no_user.svg">
+            <img src="assets/icons/no_user.svg">
         </div>
         <span style="margin-left: 20px;">Hackovid 79</span>
     </div>
