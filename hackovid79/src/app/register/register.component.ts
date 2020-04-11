@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { User } from '../models/user';
+import {AuthService} from '../services/auth.service'
 
 @Component({
   selector: 'app-register',
@@ -6,19 +8,27 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  username: string = "";
-  password: string = "";
-  email: string = "";
-  description: string = "";
-  image: string = "";
-  
-  constructor() { }
+
+  user:User = new User;
+
+    
+  constructor(private service:AuthService) { }
 
   ngOnInit(): void {
   }
 
   registerUser(){
-    console.log(this.description)
+    this.user.avatar = this.file;
+    this.service.register(this.user).subscribe(
+      (requestedUser) =>{
+        if (requestedUser){
+          alert("Usuari registrat correctament")
+        }
+      },
+      (error:{text:string}) =>{
+        alert("Ususari invalid")
+
+      })
   }
 
   @ViewChild('fileInput')

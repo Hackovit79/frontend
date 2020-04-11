@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../services/auth.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -8,13 +10,20 @@ import { Component, OnInit } from '@angular/core';
 export class LogInComponent implements OnInit {
   username: string = "";
   password: string = "";
-  constructor() { }
+  constructor(private service:AuthService) { }
 
   ngOnInit(): void {
+    this.service.logout();
   }
 
   authUser(){
-    console.log(this.username+this.password)
+    this.service.login(this.username,this.password).then((resp) => {
+      if(resp){
+        this.service.GoToUserInfo();
+      } else{
+        alert('Ususari o contrasenya incorrecte')
+      }
+    });
   }
 
 }

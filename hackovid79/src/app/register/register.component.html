@@ -3,22 +3,22 @@
     <h1>Create account</h1>
     <mat-form-field appearance="fill">
         <mat-label>Username</mat-label>
-        <input matInput [(ngModel)]="username" type="text" required>
+        <input matInput [(ngModel)]="user.username" type="text" required>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
         <mat-label>Password</mat-label>
-        <input matInput [(ngModel)]="password" type="password" required>
+        <input matInput [(ngModel)]="user.password" type="password" required>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput [(ngModel)]="email" type="email" required>
+        <input matInput [(ngModel)]="user.email" type="email" required>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
         <mat-label>Description</mat-label>
-        <textarea matInput [(ngModel)]="description" type="text"></textarea>
+        <textarea matInput [(ngModel)]="user.description" type="text"></textarea>
     </mat-form-field>
     <br>
     <div class="container">

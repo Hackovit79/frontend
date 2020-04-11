@@ -7,10 +7,10 @@
 //     image:string
 // }
 export class User {
-    id:string;
-    name:string;
+    id:string = null;
+    username:string;
     password:string;
     email:string;
     description:string;
-    image:string
+    avatar:File;
 }

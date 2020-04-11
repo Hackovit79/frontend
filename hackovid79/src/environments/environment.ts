@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   ApiEnabled:false,
-  ApiUrl:'http://localhost:3252/api'
+  ApiUrl:'https://hackovid.masip.cat/db/data'
 };
 
 /*

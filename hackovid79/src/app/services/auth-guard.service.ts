@@ -13,7 +13,6 @@ export class AuthGuardService implements CanActivate {
     // on the data property
     const rurl = state.url.split("/")
     const requestedUser:string = rurl[rurl.length -1]
-    debugger;
     if (!(this.auth.loggedIn() && (this.auth.verifyUserAccess(requestedUser))) ) {
       this.router.navigate(['login']);
       return false;

@@ -5,7 +5,7 @@ export interface Meetup {
     user:User,
     title:string,
     description:string,
-    img:string,
+    avatar:string,
     links: link[],
     start:Date,
     end:Date,
