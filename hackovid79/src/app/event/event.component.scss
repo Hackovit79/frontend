@@ -1,0 +1,30 @@
+.expansion {
+    display: flex;
+    margin: 5px;
+}
+
+.meetup-list {
+    max-width: 768px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.meetup-image {
+    max-height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.meetup-info {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.mat-expansion-panel-header.mat-expanded {
+    background: #006eff8c;
+}
+
+.mat-expansion-panel-body.mat-expanded {
+    padding: 15px 15px 15px;
+    background-color: #006eff8c;
+}

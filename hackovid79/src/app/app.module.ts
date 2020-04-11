@@ -13,6 +13,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
 import { EventComponent } from './event/event.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AddMeetupComponent } from './add-meetup/add-meetup.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatExpansionModule} from '@angular/material/expansion'; 
@@ -23,6 +24,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatSelectModule} from '@angular/material/select'; 
 import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import {MatIconModule} from '@angular/material/icon';
     RegisterComponent,
     UserComponent,
     EventComponent,
-    NavbarComponent
+    NavbarComponent,
+    AddMeetupComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     FormsModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

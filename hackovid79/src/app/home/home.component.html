@@ -12,12 +12,12 @@
                         mostra el contigut desitjat
                     </mat-panel-description>
                 </mat-expansion-panel-header>
-                <div class="filters" >
+                <div class="filters">
                     <div class="filtre">
                         <span> Filtra per data d'inici:</span>
                         <div style="margin-left: 10px;">
                             <mat-form-field>
-                                <input  matInput [matDatepicker]="picker">
+                                <input matInput [matDatepicker]="picker">
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
                             </mat-form-field>
@@ -28,7 +28,7 @@
                         <span> Filtra per autor</span>
                         <div style="margin-left: 10px;">
                             <mat-form-field>
-                                <input  matInput>
+                                <input matInput>
                             </mat-form-field>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                         <span> Filtra per categoria</span>
                         <div style="margin-left: 10px;">
                             <mat-form-field>
-                                <input  matInput>
+                                <input matInput>
                             </mat-form-field>
                         </div>
                     </div>
@@ -45,38 +45,36 @@
                         <div style="margin-left: 10px;">
                             <mat-form-field>
                                 <mat-select>
-                                  <mat-option value="INSTAGRAM" >
-                                    <div style="display: flex; align-items: center;">
-                                        <img src="assets/icons/logo-instagram.svg">
-                                        <span style="margin-left: 10px;">Instagram </span> 
-                                    </div>
+                                    <mat-option value="INSTAGRAM">
+                                        <div style="display: flex; align-items: center;">
+                                            <img src="assets/icons/logo-instagram.svg">
+                                            <span style="margin-left: 10px;">Instagram </span>
+                                        </div>
                                     </mat-option>
                                     <mat-option value="YOUTUBE">
                                         <div style="display: flex; align-items: center;">
                                             <img src="assets/icons/logo-youtube.svg">
-                                            <span style="margin-left: 10px;">YouTube </span> 
+                                            <span style="margin-left: 10px;">YouTube </span>
                                         </div>
-                                      </mat-option>
+                                    </mat-option>
                                 </mat-select>
-                              </mat-form-field>
+                            </mat-form-field>
                         </div>
                     </div>
                 </div>
                 <mat-action-row>
-                    <button mat-raised-button > 
+                    <button mat-raised-button> 
                         <span>Filtra </span>  
                         <img src="assets/icons/search.svg">
                     </button>
-                  </mat-action-row>
+                </mat-action-row>
             </mat-expansion-panel>
-            
+
         </mat-accordion>
     </div>
-    
     <div *ngFor="let meetup of Meetups">
-        <app-event > 
-            
+        <app-event [meetup]="meetup">
         </app-event>
-        
     </div>
+
 </div>
