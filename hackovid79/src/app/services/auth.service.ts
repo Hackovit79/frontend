@@ -80,9 +80,9 @@ export class AuthService {
     let username = this.getUsernameLoggedIn();
     return this.http.patch(`${env.ApiUrl}/users/${username}/@upload/avatar`,pic);
   }
-  UrlUserPic(filename:string):string{
+  UrlUserPic():string{
     let username = this.getUsernameLoggedIn();
-    return `${env.ApiUrl}/users/${username}/@download/avatar/${filename}`
+    return `${env.ApiUrl}/users/${username}/@download/avatar`
   }
   UpdateUser(user:any){
     let username = this.getUsernameLoggedIn();

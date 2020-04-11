@@ -21,12 +21,9 @@ export class ApiService {
     return this.http.post<boolean>(`${env.ApiUrl}/event`,meetup);
   }
 
-  GetMeetups():Observable<Meetup[]>{
-    if (env.ApiEnabled){
-      return this.http.get<Meetup[]>(`${env.ApiUrl}/events`);
-    } else{
-      return this.http.get<Meetup[]>(`/assets/mockup/meetups.json`);
-    }
+  GetMeetups():Observable<{items:Meetup[], items_total:number}>{
+    return this.http.get<{items:Meetup[], items_total:number}>(`${env.ApiUrl}/@meetup-filter`);
+    
   }
 //#endregion
   

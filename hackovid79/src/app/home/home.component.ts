@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
   //Properties
   GlobalMeetup:Meetup;
 
+  defaultImg:string = 'https://images.unsplash.com/photo-1496979551903-46e46589a88b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cda12b505afa1beb06e49d89014cbd65&auto=format&fit=crop&w=634&q=80'
   Meetups: Meetup[];
 
   ngOnInit(): void {
@@ -53,9 +54,17 @@ export class HomeComponent implements OnInit {
   }
   GetAllMeetups(){
     this.service.GetMeetups().subscribe( (requestedMeetups) => {
-      if(requestedMeetups != null){
-          this.Meetups = requestedMeetups;
+      console.log("Meetups: "+ requestedMeetups.items_total);
+      if(requestedMeetups.items.length> 0){
+          this.Meetups = requestedMeetups.items;
+          this.evaluateLiveMeetups();
       }
     } )
+  }
+
+  evaluateLiveMeetups(){
+    for(let i =0;i< this.Meetups.length ; i++){
+      // if dates between now
+    }
   }
 }

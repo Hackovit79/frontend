@@ -11,6 +11,7 @@ export interface Meetup {
     end:Date,
     categories:string[],
     subcategories:string[],
+    isLive:boolean;
 }
 
 export interface link{

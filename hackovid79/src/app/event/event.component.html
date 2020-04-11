@@ -2,18 +2,19 @@
     <div class="example-1 card">
         <div class="wrapper">
             <div class="date">
-                <span class="day">{{meetup.start}}</span>
+                <span class="day">{{meetup.start | date:'dd/MM/yyyy HH:mm'}}</span>
             </div>
             <div class="data">
                 <div class="content">
-                    <span class="author">{{meetup.user}}</span>
-                    <h1 class="title"><a href={{meetup.links[0].url}}>{{meetup.title}}</a></h1>
+                    <span class="author" [ngClass]="{live: 'meetup.isLive'}">{{meetup.user}}</span>
+                    <h1 class="title">{{meetup.title}}</h1>
                     <p class="text">{{meetup.description}}</p>
+
                     <label for="show-menu" class="menu-button"><span></span></label>
                 </div>
                 <input type="checkbox" id="show-menu" />
                 <ul class="menu-content">
-                    <li *ngFor=" let link of meetup.links ">
+                    <li *ngFor=" let link of meetup?.links ">
                         <a href={{link.url}}><img src="assets/icons/logo-youtube.svg"></a>
                     </li>
                 </ul>

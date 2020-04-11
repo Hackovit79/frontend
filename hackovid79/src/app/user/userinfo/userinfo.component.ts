@@ -70,7 +70,7 @@ export class UserinfoComponent implements OnInit {
       if (info != null){
         this.user = info;
         if(info.avatar != null){
-          this.userPicPath = this.service.UrlUserPic(info.avatar.filename)
+          this.userPicPath = this.service.UrlUserPic()
         } else{
           this.userPicPath = "assets/user.jpg"
         }
