@@ -72,9 +72,11 @@
 
         </mat-accordion>
     </div>
-    <div *ngFor="let meetup of Meetups">
-        <app-event [meetup]="meetup">
-        </app-event>
+    <div class="meetup-list">
+        <div *ngFor="let meetup of Meetups">
+            <app-event [meetup]="meetup">
+            </app-event>
+        </div>
     </div>
 
 </div>

@@ -12,9 +12,14 @@
     // flex-direction: column;
     justify-content: space-around;
     flex-wrap: wrap;
-
 }
 
 .filtre {
     margin: 5px 30px;
+}
+
+.meetup-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
