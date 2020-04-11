@@ -46,10 +46,10 @@ export class AuthService {
 
    login(username:string, password:string):Promise<boolean>{
      return new Promise((reslove) => {
-      this.http.post<{access_token:  string,text:string}>(`${env.ApiUrl}/@login`, {username, password}).
+      this.http.post<{token:  string,text:string}>(`${env.ApiUrl}/@login`, {username, password}).
       subscribe(
-            (res:{access_token:  string}) =>{
-              localStorage.setItem('access_token', res.access_token);
+            (res:{token:  string}) =>{
+              localStorage.setItem('access_token', res.token);
               localStorage.setItem('current_user', username);
               reslove(true);
             },
@@ -71,6 +71,27 @@ export class AuthService {
     localStorage.removeItem('current_user');
   }
 
+  GetUserInfo():Observable<User>{
+    let username = this.getUsernameLoggedIn();
+    return this.http.get<User>(`${env.ApiUrl}/users/${username}`);
+  }
+
+  UpdateUserPic(pic:File){
+    let username = this.getUsernameLoggedIn();
+    return this.http.patch(`${env.ApiUrl}/users/${username}/@upload/avatar`,pic);
+  }
+  UrlUserPic(filename:string):string{
+    let username = this.getUsernameLoggedIn();
+    return `${env.ApiUrl}/users/${username}/@download/avatar/${filename}`
+  }
+  UpdateUser(user:any){
+    let username = this.getUsernameLoggedIn();
+    return this.http.patch(`${env.ApiUrl}/users/${username}`,user);
+  }
+
+  getUsernameLoggedIn():string{
+    return localStorage.getItem('current_user')
+  }
 
   public loggedIn(): boolean{
     return localStorage.getItem('access_token') !==  null;

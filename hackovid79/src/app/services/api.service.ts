@@ -4,6 +4,7 @@ import {environment as env } from '../../environments/environment'
 import { Observable } from 'rxjs';
 
 import {Meetup} from '../models/event'
+import { User } from '../models/user';
 
 
 @Injectable({
@@ -11,6 +12,7 @@ import {Meetup} from '../models/event'
 })
 export class ApiService {
 
+  //#region Meetups
   GetMeetup(id:number):Observable<Meetup>{
     return this.http.get<Meetup>(`${env.ApiUrl}/event/${id}`);
   }
@@ -26,7 +28,9 @@ export class ApiService {
       return this.http.get<Meetup[]>(`/assets/mockup/meetups.json`);
     }
   }
-
+//#endregion
   
+  
+
   constructor(private http: HttpClient) { }
 }

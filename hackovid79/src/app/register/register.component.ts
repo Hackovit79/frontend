@@ -18,7 +18,6 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(){
-    this.user.avatar = this.file;
     this.service.register(this.user).subscribe(
       (requestedUser) =>{
         if (requestedUser){
@@ -31,16 +30,16 @@ export class RegisterComponent implements OnInit {
       })
   }
 
-  @ViewChild('fileInput')
-  fileInput;
-  file: File | null = null;
+  // @ViewChild('fileInput')
+  // fileInput;
+  // file: File | null = null;
 
-  onClickFileInputButton(): void {
-    this.fileInput.nativeElement.click();
-  }
+  // onClickFileInputButton(): void {
+  //   this.fileInput.nativeElement.click();
+  // }
 
-  onChangeFileInput(): void {
-    const files: { [key: string]: File } = this.fileInput.nativeElement.files;
-    this.file = files[0];
-  }
+  // onChangeFileInput(): void {
+  //   const files: { [key: string]: File } = this.fileInput.nativeElement.files;
+  //   this.file = files[0];
+  // }
   }

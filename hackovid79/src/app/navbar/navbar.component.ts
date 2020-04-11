@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
   username:string
 
   ngOnInit(): void {
+    this.username = this.service.getUsernameLoggedIn();
   }
 
   goHome(){

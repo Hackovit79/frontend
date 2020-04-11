@@ -25,7 +25,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select'; 
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
-
+import {MatTabsModule} from '@angular/material/tabs';
+import { UserinfoComponent } from './user/userinfo/userinfo.component';
+import { UsereventsComponent } from './user/userevents/userevents.component'; 
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import {MatCardModule} from '@angular/material/card';
     UserComponent,
     EventComponent,
     NavbarComponent,
-    AddMeetupComponent
+    AddMeetupComponent,
+    UserinfoComponent,
+    UsereventsComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,8 @@ import {MatCardModule} from '@angular/material/card';
     FormsModule,
     MatSelectModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

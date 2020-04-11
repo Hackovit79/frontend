@@ -12,5 +12,5 @@ export class User {
     password:string;
     email:string;
     description:string;
-    avatar:File;
+    avatar:any;
 }

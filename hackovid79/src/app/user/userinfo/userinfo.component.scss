@@ -1,0 +1,39 @@
+.userinfo{
+    display: flex;
+    margin: 10px 20px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.profile{
+    //flex-basis: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profilepic{
+    max-width: calc(100vw * 0.20); 
+    min-width: 200px;
+}
+.editPicture{
+    position: fixed;
+    margin-left: -60px;
+    margin-top: -5px;
+}
+.username{
+    font-size: 20px;
+    font-weight: bolder;
+}
+.uservalues{
+    margin:5px 0px;
+    padding: 10px 20px;
+    //flex-basis: 45%;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space space-between;
+}
+.uservalue{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
