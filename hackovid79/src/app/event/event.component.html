@@ -22,21 +22,19 @@
                         <ul class="menu-content">
                             <li *ngFor=" let link of meetup?.links ">
                                 <div [ngSwitch]="link.platform">
-                                    <div *ngSwitchCase="(link.platform=='youtube')">
+                                    <div *ngSwitchCase="'youtube'">
                                         <a href={{link.url}}><img class="icon" src="assets/icons/logo-youtube.svg"></a>
                                     </div>
-                                    <div *ngSwitchCase="(link.platform=='google')">
-                                        <a href={{link.url}}><img class="icon" src="assets/icons/logo-youtube.svg"></a>
+                                    <div *ngSwitchCase="'google'">
+                                        <a href={{link.url}}><img class="icon" src="assets/icons/logo-google.svg"></a>
                                     </div>
-                                    <div *ngSwitchCase="(link.platform=='instagram')">
+                                    <div *ngSwitchCase="'instagram'">
                                         <a href={{link.url}}><img class="icon" src="assets/icons/logo-instagram.svg"></a>
                                     </div>
                                     <div *ngSwitchDefault>
                                         <a href={{link.url}}><img class="icon" src="assets/icons/logo-other.svg"></a>
                                     </div>
                                 </div>
-                                <a href={{link.url}}><img class="icon" src="assets/icons/logo-youtube.svg"></a>
-                                <a *ngIf="link.platform=='youtube'" href={{link.url}}><img class="icon" src="assets/icons/logo-youtube.svg"></a>
                             </li>
                         </ul>
                     </div>
