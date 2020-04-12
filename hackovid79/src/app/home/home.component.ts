@@ -67,10 +67,14 @@ export class HomeComponent implements OnInit {
       let meetupStart = new Date(meetup.start)
       let meetupEnd = new Date(meetup.end)
       let actualTime = new Date()
+      // if(meetup.links) {
+      // for(let link of meetup.links){
+      //   console.log(link.platform)
+      // }}
       if ((meetupStart.getTime() < actualTime.getTime()) && (actualTime.getTime() < meetupEnd.getTime())){
         meetup.isLive = true
       } else {
-        meetup.isLive = true
+        meetup.isLive = false
       }
     }
   }
