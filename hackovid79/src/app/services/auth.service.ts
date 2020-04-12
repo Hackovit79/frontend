@@ -58,10 +58,14 @@ export class AuthService {
 
    login(username:string, password:string):Promise<boolean>{
      return new Promise((reslove) => {
-      this.http.post<{token:  string,text:string}>(`${env.ApiUrl}/@login`, {username, password}).
+      this.http.post<{token:  string,text:string, exp:number}>(`${env.ApiUrl}/@login`, {username, password}).
       subscribe(
-            (res:{token:  string}) =>{
+            (res:{token:  string, exp:number}) =>{
+              debugger;
               localStorage.setItem('access_token', res.token);
+              let expDate = new Date()
+              expDate.setSeconds(expDate.getSeconds() + res.exp);
+              localStorage.setItem('access_token_exp', expDate.toString());
               localStorage.setItem('current_user', username);
               reslove(true);
             },
@@ -78,6 +82,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('access_token');
+    localStorage.removeItem('access_token_exp');
     localStorage.removeItem('current_user');
   }
 
@@ -106,7 +111,16 @@ export class AuthService {
 
   // verify access
   public loggedIn(): boolean{
-    return localStorage.getItem('access_token') !==  null;
+    let token = localStorage.getItem('access_token');
+    let tokenExp = localStorage.getItem('access_token_exp');
+    if (tokenExp != null){
+      let expiration = new Date(tokenExp);
+      let now = new Date();
+      if (now < expiration){
+        return token != null;
+      }
+    }
+    return  false;
   }
   public verifyUserAccess(username:string): boolean{
     let localUsername = localStorage.getItem('current_user')

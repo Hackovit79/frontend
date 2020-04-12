@@ -13,8 +13,9 @@ import { AuthService } from './auth.service';
 export class ApiService {
 
   //#region Meetups
-  GetMeetup(id:number):Observable<Meetup>{
-    return this.http.get<Meetup>(`${env.ApiUrl}/event/${id}`);
+  getMeetupImg(username:string,id:string):string{
+    let url:string = `${env.ApiUrl}/users/${username}/${id}/@download/img`;
+    return url
   }
 
   PostMeetup(meetup:Meetup):Observable<boolean>{

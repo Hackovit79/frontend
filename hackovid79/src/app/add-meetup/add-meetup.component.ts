@@ -4,6 +4,7 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { ApiService } from '../services/api.service';
+import { getMatIconNoHttpProviderError } from '@angular/material/icon';
 
 @Component({
   selector: 'app-add-meetup',
@@ -43,9 +44,20 @@ export class AddMeetupComponent implements OnInit {
   newSubcategorie:string;
 
   createMeetup(){
-
+    debugger;
+    // let reader = new FileReader();
+    // if (this.file != null){
+    //   reader.readAsDataURL(this.file);
+    //    reader.onloadend = (e) => {
+    //     this.data.img = {"data":reader.result};
+    //     this.service.PostMeetup(this.data).subscribe();
+    //     this.dialogRef.close();  
+    //   }
+    // }else{
+    // }
     this.service.PostMeetup(this.data).subscribe();
     this.dialogRef.close();  
+    
   }
 
   //manage Categories
@@ -110,5 +122,10 @@ export class AddMeetupComponent implements OnInit {
   onChangeFileInput(): void {
     const files: { [key: string]: File } = this.fileInput.nativeElement.files;
     this.file = files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(this.file);
+       reader.onloadend = (e) => {
+        this.data.img = {"data":reader.result};
+      }
   }
   }
