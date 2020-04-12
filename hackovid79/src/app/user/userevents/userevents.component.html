@@ -1,1 +1,9 @@
-<p>userevents works!</p>
+<div class="userevents">
+    <button mat-raised-button style="align-self: flex-end; margin: 20px;" (click)="addMeetup()"> Afegir event</button>
+    <div class="meetup-list">
+        <div *ngFor="let meetup of Meetups">
+            <app-event [meetup]="meetup">
+            </app-event>
+        </div>
+    </div>
+</div>

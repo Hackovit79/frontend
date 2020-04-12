@@ -1,3 +1,20 @@
 .meetup-form {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.meetupInfo{
+    display: flex;
+    flex-wrap: wrap;
+    .mainInfo{
+        margin: 0px 10px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+.link{
+    display: flex;
+    justify-content: space-between;
+    margin: 3px 10px
 }

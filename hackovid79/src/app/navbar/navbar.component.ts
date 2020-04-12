@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = this.service.getUsernameLoggedIn();
-    if (this.username != ""){
+    if (this.username != null){
       this.userpic = this.service.UrlUserPic();
     } else{
       this.userpic = "assets/user.jpg"

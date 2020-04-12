@@ -12,12 +12,16 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent },
   {
       path: 'user/:name', 
-    component: UserComponent,
-    canActivate: [guard], 
+      component: UserComponent,
+      canActivate: [guard], 
+  },
+  {
+      path: 'user/events/:name', 
+      component: UserComponent,
+      canActivate: [guard],
   },
   {path: 'login', component: LogInComponent },
   {path: 'register', component: RegisterComponent },
-  {path: 'user/:name/addevent', component: AddMeetupComponent},
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'

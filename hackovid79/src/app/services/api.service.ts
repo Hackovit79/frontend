@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import {Meetup} from '../models/event'
 import { User } from '../models/user';
-
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,8 @@ export class ApiService {
   }
 
   PostMeetup(meetup:Meetup):Observable<boolean>{
-    return this.http.post<boolean>(`${env.ApiUrl}/event`,meetup);
+    let username:string = this.service.getUsernameLoggedIn();
+    return this.http.post<boolean>(`${env.ApiUrl}/users/${username}`,meetup);
   }
 
   GetMeetups():Observable<{items:Meetup[], items_total:number}>{
@@ -29,5 +30,5 @@ export class ApiService {
   
   
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private service:AuthService) { }
 }

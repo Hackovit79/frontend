@@ -1,12 +1,15 @@
 <div class="user">
     <app-navbar></app-navbar>
-    <mat-tab-group>
+    <mat-tab-group 
+        [selectedIndex]="TabSelected" 
+        (selectedIndexChange)="navigate($event)"
+    >
         <mat-tab label="Perfil"> 
             <app-userinfo>
 
             </app-userinfo>
         </mat-tab>
-        <mat-tab label="Events"> 
+        <mat-tab label="Events" > 
             <app-userevents>
                 
             </app-userevents>

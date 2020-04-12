@@ -1,11 +1,11 @@
 <div class="navbar">
-    <span style="cursor: pointer;" (click)="goHome">Cartellera</span>
+    <span style="cursor: pointer;" (click)="goHome()">Cartellera</span>
 
     <div class="userlogo">
         <div style="cursor: pointer; display: flex; align-items: center;" (click)="goUser()">
             <span>{{username}}</span>
             
-            <img src="{{userpic}}" style="max-width: 30px; border-radius: 50%; margin-left: 5px;">
+            <img src="{{userpic}}" class="userpic">
         </div>
     </div>
 

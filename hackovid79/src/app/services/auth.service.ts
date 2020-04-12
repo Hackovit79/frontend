@@ -35,6 +35,8 @@ export class AuthService {
     public router: Router
   ) { }
 
+  // navigation
+
   GoToUserInfo(){
     if (this.loggedIn()){
       let username = localStorage.getItem('current_user')
@@ -43,6 +45,16 @@ export class AuthService {
       this.router.navigate(['login']);
     }
   }
+  GoToUserEvents(){
+    if (this.loggedIn()){
+      let username = localStorage.getItem('current_user')
+      this.router.navigate(['user/events/'+username+'']);
+    } else{
+      this.router.navigate(['login']);
+    }
+  }
+
+  // sesion managers methods
 
    login(username:string, password:string):Promise<boolean>{
      return new Promise((reslove) => {
@@ -58,8 +70,6 @@ export class AuthService {
             }
         )
      })
-    
-
 
   }
   register(user:User):Observable<User>{
@@ -71,6 +81,7 @@ export class AuthService {
     localStorage.removeItem('current_user');
   }
 
+  // get current user info
   GetUserInfo():Observable<User>{
     let username = this.getUsernameLoggedIn();
     return this.http.get<User>(`${env.ApiUrl}/users/${username}`);
@@ -93,6 +104,7 @@ export class AuthService {
     return localStorage.getItem('current_user')
   }
 
+  // verify access
   public loggedIn(): boolean{
     return localStorage.getItem('access_token') !==  null;
   }

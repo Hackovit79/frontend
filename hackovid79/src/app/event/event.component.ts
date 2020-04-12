@@ -12,7 +12,7 @@ export class EventComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.meetup)
+    //console.log(this.meetup)
   }
 
 }

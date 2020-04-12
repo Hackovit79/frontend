@@ -1,53 +1,88 @@
 <div class="meetup-form">
-    <h1>Create new event</h1>
-    <mat-form-field appearance="fill">
-        <mat-label>Title</mat-label>
-        <input matInput [(ngModel)]="title" type="text" required>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label>Date</mat-label>
-        <input matInput type="datetime-local" placeholder="start date" [(ngModel)]="datetime" required>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label>Description</mat-label>
-        <textarea matInput [(ngModel)]="description" type="text"></textarea>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label>Platform</mat-label>
-        <input matInput [(ngModel)]="platform" type="text" required>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label>Link</mat-label>
-        <input matInput [(ngModel)]="link" type="text" required>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label>Category</mat-label>
-        <input matInput [(ngModel)]="category" type="text" required>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label>Subcategory</mat-label>
-        <input matInput [(ngModel)]="subcategory" type="text" required>
-    </mat-form-field>
-    <br>
-    <div class="container">
-        <input type="file" style="display: none" #fileInput accept="image/*" (change)="onChangeFileInput()" />
-        <button mat-raised-button color="primary" class="file-select-button" (click)="onClickFileInputButton()">
-          <mat-icon>attach_file</mat-icon>
-          Select Image
-        </button>
-        <p class="file-name" *ngIf="!file; else fileName">No image</p>
-        <ng-template #fileName>
-            <p class="file-name">{{ file?.name }}</p>
-        </ng-template>
+    <h1>Afegir nou event </h1>
+    <div class="meetupInfo">
+        <div class="mainInfo">
+            <mat-form-field >
+                <mat-label>Títol</mat-label>
+                <input matInput [(ngModel)]="data.title" type="text" required>
+            </mat-form-field>
+            <mat-form-field >
+                <mat-label>Inici</mat-label>
+                    <!-- <input matInput [matDatepicker]="pickerStart" [(ngModel)]="data.start" required>
+                    <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerStart></mat-datepicker> -->
+                    <input matInput type="datetime-local" [(ngModel)]="data.start" required>
+                    
+            </mat-form-field>
+            <mat-form-field >
+                <mat-label>Final</mat-label>
+                    <!-- <input matInput [matDatepicker]="pickerEnd" [(ngModel)]="data.end" required>
+                    <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerEnd></mat-datepicker> -->
+                    <input matInput type="datetime-local" [(ngModel)]="data.end" required>
+                </mat-form-field>
+            <mat-form-field>
+                <mat-label>Descripció</mat-label>
+                <textarea matInput [(ngModel)]="data.description" type="text"></textarea>
+            </mat-form-field>
+
+            <div class="container">
+                <input type="file" style="display: none" #fileInput accept="image/*" (change)="onChangeFileInput()" />
+                <button mat-raised-button class="file-select-button" (click)="onClickFileInputButton()">
+                    Seleccion la imatge de l'event
+                    <mat-icon>attach_file</mat-icon>
+                </button>
+                <p class="file-name" *ngIf="!file; else fileName"></p>
+                <ng-template #fileName>
+                    <p class="file-name">{{ file?.name }}</p>
+                </ng-template>
+            </div>
+        </div>
+        <div class="mainInfo" >
+            <mat-form-field >
+                <mat-label>link</mat-label>
+                <input matInput [(ngModel)]="newUrl" type="text">
+            </mat-form-field>
+            <button style="align-self: flex-end;" mat-raised-button (click)="addLink()" >Afegir link</button>
+            <div *ngFor="let link of data.links" class="link">
+                <a *ngIf="link.platform == 'youtube'" href="{{link.url}}" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/icons/logo-youtube.svg" title="{{link.url}}">
+                </a>
+                <a *ngIf="link.platform == 'instagram'" href="{{link.url}}" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/icons/logo-instagram.svg" title="{{link.url}}">
+                </a>
+                <button mat-button> <img src="assets/icons/delete.svg" (click)="deleteLink(link)"> </button>
+            </div>
+        </div>
+        
+        <div class="mainInfo" >
+            <mat-form-field >
+                <mat-label>Categoria</mat-label>
+                <mat-select [(ngModel)]="newCategorie">
+                    <mat-option *ngFor="let c of categories" [value]="c">
+                      {{c}}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+            <button style="align-self: flex-end;" mat-raised-button (click)="addCategorie()" >Afegir categoria</button>
+            <div *ngFor="let categorie of data.categories" class="link">
+                <span>{{categorie}}</span>
+                <button mat-button> <img src="assets/icons/delete.svg" (click)="deleteCategorie(categorie)"> </button>
+            </div>
+            
+        </div>
+        <div class="mainInfo">
+            <mat-form-field >
+                <mat-label>Subcategoria</mat-label>
+                <input matInput [(ngModel)]="newSubcategorie" type="text">
+            </mat-form-field>
+            <button style="align-self: flex-end;" mat-raised-button (click)="addSubcategorie()" >Afegir subcategoria</button>
+            <div *ngFor="let categorie of data.subcategories" class="link">
+                <span>{{categorie}}</span>
+                <button mat-button> <img src="assets/icons/delete.svg" (click)="deleteSubcategorie(categorie)"> </button>
+            </div>
+        </div>
     </div>
-    <br><br>
-    <button mat-raised-button (click)="registerUser()" color="primary">Create event!</button>
-    <br><br>
-    <a mat-raised-button routerLink="/">Not now</a>
+    
+    <button style="align-self: flex-end;" mat-raised-button (click)="createMeetup()" color="primary">Create event!</button>
 </div>

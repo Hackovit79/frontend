@@ -26,6 +26,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialogModule} from '@angular/material/dialog'; 
+
 import { UserinfoComponent } from './user/userinfo/userinfo.component';
 import { UsereventsComponent } from './user/userevents/userevents.component'; 
 
@@ -57,7 +59,8 @@ import { UsereventsComponent } from './user/userevents/userevents.component';
     MatSelectModule,
     MatIconModule,
     MatCardModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDialogModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
