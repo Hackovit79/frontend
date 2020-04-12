@@ -56,7 +56,7 @@ export class AddMeetupComponent implements OnInit {
     // }else{
     // }
     this.service.PostMeetup(this.data).subscribe();
-    this.dialogRef.close();  
+    this.dialogRef.close(true);  
     
   }
 
@@ -123,9 +123,10 @@ export class AddMeetupComponent implements OnInit {
     const files: { [key: string]: File } = this.fileInput.nativeElement.files;
     this.file = files[0];
     let reader = new FileReader();
+    reader.onloadend = (e) => {
+      let result:string = e.target.result.toString();
+      this.data.img = result.split("data:")[1];
+    }
     reader.readAsDataURL(this.file);
-       reader.onloadend = (e) => {
-        this.data.img = {"data":reader.result};
-      }
   }
   }

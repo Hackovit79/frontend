@@ -35,30 +35,40 @@ export class HomeComponent implements OnInit {
 
   //Properties
   GlobalMeetup:Meetup;
+  Categories:any[] = [];
 
-  defaultImg:string = 'https://images.unsplash.com/photo-1496979551903-46e46589a88b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cda12b505afa1beb06e49d89014cbd65&auto=format&fit=crop&w=634&q=80'
+  //filters
+  user:string="";
+  inici:Date = null;
+  categoria:string;
+  platform:string;
+
   Meetups: Meetup[];
 
   ngOnInit(): void {
     this.GetAllMeetups();
 
   }
-
-
-
-  GetMeetup(id:number){
-    // this.service.GetMeetup(id).subscribe( (requestedMeetup) => {
-    //         if(requestedMeetup != null){
-    //   }
-    // } )
-  }
+  
   GetAllMeetups(){
     this.service.GetMeetups().subscribe( (requestedMeetups) => {
-      console.log("Meetups: "+ requestedMeetups.items_total);
-      if(requestedMeetups.items.length> 0){
-          this.Meetups = requestedMeetups.items;
-          this.evaluateLiveMeetups();
+      //console.log("Meetups: "+ requestedMeetups.items_total);
+      // get categories
+      for(let i=0; i < requestedMeetups.aggregations.categories.buckets.length; i++){
+        let c = {key:requestedMeetups.aggregations.categories.buckets[i].key, count: requestedMeetups.aggregations.categories.buckets[i].doc_count }
+        this.Categories.push(c);
       }
+      this.Meetups = requestedMeetups.items;
+      this.evaluateLiveMeetups();
+      
+    } )
+  }
+  GetFilteredMeetups(){
+    this.service.GetMeetupsFiltered(this.user,this.categoria,this.inici,this.platform).subscribe( (requestedMeetups) => {
+      //console.log("Meetups: "+ requestedMeetups.items_total);
+      this.Meetups = requestedMeetups.items;
+      this.evaluateLiveMeetups();
+      
     } )
   }
 

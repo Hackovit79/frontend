@@ -22,10 +22,37 @@ export class ApiService {
     let username:string = this.service.getUsernameLoggedIn();
     return this.http.post<boolean>(`${env.ApiUrl}/users/${username}`,meetup);
   }
+  DeleteMeetup(id:string):Observable<boolean>{
+    let username:string = this.service.getUsernameLoggedIn();
+    return this.http.delete<boolean>(`${env.ApiUrl}/users/${username}/${id}`);
+  }
 
-  GetMeetups():Observable<{items:Meetup[], items_total:number}>{
-    return this.http.get<{items:Meetup[], items_total:number}>(`${env.ApiUrl}/@meetup-filter`);
+  GetMeetups():Observable<{items:Meetup[], items_total:number, aggregations:any}>{
+    return this.http.get<{items:Meetup[], items_total:number, aggregations:any}>(`${env.ApiUrl}/@meetup-filter`);
     
+  }
+  GetMeetupsFiltered(user:string, category:string,start_date:Date,platform:string):Observable<{items:Meetup[], items_total:number,aggregations:any}>{
+    let url:string = `${env.ApiUrl}/@meetup-filter?`
+    if(!this.emptyString(user)){
+      url += "user="+user+"&"
+    }
+    if(!this.emptyString(category)){
+      url += "category="+category+"&"
+    }
+    if(start_date != null){
+      url += "start_date="+start_date.toISOString()+"&"
+    }
+    if(!this.emptyString(platform)){
+      url += "platform="+platform+"&"
+    }
+    // delete last &
+    url = url.substring(0, url.length - 1);
+    return this.http.get<{items:Meetup[], items_total:number, aggregations:any}>(url);
+    
+  }
+
+  private emptyString(value:string):boolean{
+    return (!value || value == undefined || value == "" || value.length == 0);
   }
 //#endregion
   

@@ -30,4 +30,6 @@ sans-serif;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    max-height: calc(100vh*0.7);
+    overflow-x: auto;
 }

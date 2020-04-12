@@ -2,7 +2,7 @@
     <button mat-raised-button style="align-self: flex-end; margin: 20px;" (click)="addMeetup()"> Afegir event</button>
     <div class="meetup-list">
         <div *ngFor="let meetup of Meetups">
-            <app-event [meetup]="meetup">
+            <app-event [meetup]="meetup" role="admin">
             </app-event>
         </div>
     </div>

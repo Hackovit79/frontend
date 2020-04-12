@@ -17,7 +17,7 @@
                         <span> Filtra per data d'inici:</span>
                         <div style="margin-left: 10px;">
                             <mat-form-field>
-                                <input matInput [matDatepicker]="picker">
+                                <input matInput [matDatepicker]="picker" [(ngModel)]="inici">
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
                             </mat-form-field>
@@ -27,8 +27,8 @@
                     <div class="filtre">
                         <span> Filtra per autor</span>
                         <div style="margin-left: 10px;">
-                            <mat-form-field>
-                                <input matInput>
+                            <mat-form-field >
+                                <input matInput [(ngModel)]="user">
                             </mat-form-field>
                         </div>
                     </div>
@@ -36,7 +36,16 @@
                         <span> Filtra per categoria</span>
                         <div style="margin-left: 10px;">
                             <mat-form-field>
-                                <input matInput>
+                                <mat-select [(ngModel)]="categoria" *ngIf="Categories">
+                                    <mat-option value=""> 
+                                        Cap
+                                    </mat-option>
+                                    <mat-option *ngFor="let c of Categories" [value]="c.key">
+                                        <div>
+                                            <span matBadge="{{c.count}}" matBadgeOverlap="false">{{c.key}}  </span>
+                                        </div>
+                                    </mat-option>
+                                  </mat-select>
                             </mat-form-field>
                         </div>
                     </div>
@@ -44,14 +53,17 @@
                         <span> Filtra per plataforma</span>
                         <div style="margin-left: 10px;">
                             <mat-form-field>
-                                <mat-select>
-                                    <mat-option value="INSTAGRAM">
+                                <mat-select [(ngModel)]="platform">
+                                    <mat-option value=""> 
+                                        Cap
+                                    </mat-option>
+                                    <mat-option value="instagram">
                                         <div style="display: flex; align-items: center;">
                                             <img src="assets/icons/logo-instagram-black.svg">
                                             <span style="margin-left: 10px;">Instagram </span>
                                         </div>
                                     </mat-option>
-                                    <mat-option value="YOUTUBE">
+                                    <mat-option value="youtube">
                                         <div style="display: flex; align-items: center;">
                                             <img src="assets/icons/logo-youtube-black.svg">
                                             <span style="margin-left: 10px;">YouTube </span>
@@ -63,7 +75,7 @@
                     </div>
                 </div>
                 <mat-action-row>
-                    <button mat-raised-button> 
+                    <button mat-raised-button (click)="GetFilteredMeetups()"> 
                         <span>Filtra </span>  
                         <img src="assets/icons/search.svg">
                     </button>
@@ -77,6 +89,7 @@
             <app-event [meetup]="meetup">
             </app-event>
         </div>
+        <span *ngIf="Meetups.length == 0">No hi han resulats</span>
     </div>
 
 </div>

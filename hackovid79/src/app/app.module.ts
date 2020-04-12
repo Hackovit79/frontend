@@ -27,6 +27,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog'; 
+import {MatBadgeModule} from '@angular/material/badge'; 
 
 import { UserinfoComponent } from './user/userinfo/userinfo.component';
 import { UsereventsComponent } from './user/userevents/userevents.component'; 
@@ -60,7 +61,8 @@ import { UsereventsComponent } from './user/userevents/userevents.component';
     MatIconModule,
     MatCardModule,
     MatTabsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatBadgeModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
