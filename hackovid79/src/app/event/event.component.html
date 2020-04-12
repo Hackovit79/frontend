@@ -1,15 +1,43 @@
 <div class="row">
     <div class="example-1 card">
-        <div class="wrapper">
+        <div class="wrapper" [ngStyle]="{'background': backImgStyle}">
             <div class="date">
-                <span class="day">{{meetup.start | date:'dd/MM/yyyy HH:mm'}}</span>
+                <span class="day">{{meetup.start | date:'dd/MM/yyyy HH:mm'}}h</span>
+            </div>
+            <div *ngIf="meetup.isLive" class="live">
+                <span><img class="icon" src="assets/icons/live.svg"></span>
             </div>
             <div class="data">
                 <div class="content">
-                    <span class="author" [ngClass]="{live: 'meetup.isLive'}">{{meetup.user}}</span>
+                    <span class="author">{{meetup.user}}</span>
                     <h1 class="title">{{meetup.title}}</h1>
                     <p class="text">{{meetup.description}}</p>
-
+                    <div *ngFor="let categoria of meetup.categories">
+                        <span>{{categoria}} </span>
+                    </div>
+                    <div *ngFor="let subcategoria of meetup.subcategories">
+                        <span>{{subcategoria}} </span>
+                    </div>
+                    <div class="links">
+                        <ul class="menu-content">
+                            <li *ngFor=" let link of meetup?.links ">
+                                <div [ngSwitch]="link.platform">
+                                    <div *ngSwitchCase="(link.platform=='youtube')">
+                                        <a href={{link.url}} target="_blank"><img class="icon" src="assets/icons/logo-youtube.svg"></a>
+                                    </div>
+                                    <div *ngSwitchCase="(link.platform=='google')">
+                                        <a href={{link.url}} target="_blank"><img class="icon" src="assets/icons/logo-youtube.svg"></a>
+                                    </div>
+                                    <div *ngSwitchCase="(link.platform=='instagram')">
+                                        <a href={{link.url}} target="_blank"><img class="icon" src="assets/icons/logo-instagram.svg"></a>
+                                    </div>
+                                    <div *ngSwitchDefault>
+                                        <a href={{link.url}} target="_blank"><img class="icon" src="assets/icons/logo-other.svg"></a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                     <label for="show-menu" class="menu-button"><span></span></label>
                 </div>
                 <input type="checkbox" id="show-menu" />

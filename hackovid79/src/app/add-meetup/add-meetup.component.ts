@@ -38,7 +38,7 @@ export class AddMeetupComponent implements OnInit {
   // variables
   newUrl:string;
   errorLink:string= "invalid url";
-  categories:string[] = ["MÚSICA", "EXERCICI","EDUCACIÓ","ALIMENTACIÓ","CULTURA","ALTRES"]
+  categories:string[] = ["MÚSICA", "EXERCICI","EDUCACIÓ","ALIMENTACIÓ","CULTURA","JOCS","ALTRES"]
   newCategorie:string;
   newSubcategorie:string;
 
