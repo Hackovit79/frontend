@@ -1,7 +1,7 @@
-    <app-navbar></app-navbar>
+<app-navbar></app-navbar>
 
 <div class="login-form">
-    <h1>LogIn</h1>
+    <h1><strong>L</strong>og<strong>I</strong>n</h1>
     <mat-form-field appearance="fill">
         <mat-label>Username</mat-label>
         <input matInput [(ngModel)]="username" required>
@@ -12,7 +12,7 @@
         <input matInput [(ngModel)]="password" type="password" required>
     </mat-form-field>
     <br>
-    <button mat-raised-button (click)="authUser()" color="primary">LogIn</button>
+    <button mat-raised-button (click)="authUser()" class="log-btn">Entrar</button>
     <br><br>
-    <a mat-raised-button routerLink="/register">Don't have an account?</a>
+    <a mat-raised-button routerLink="/register">Encara no estàs registrat?</a>
 </div>

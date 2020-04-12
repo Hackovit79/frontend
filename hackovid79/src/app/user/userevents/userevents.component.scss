@@ -15,3 +15,9 @@ $blacktrans: rgba(0, 0, 0, 0.815);
     font-size: 20px;
     font-family: $open-sans;
 }
+
+.meetup-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
