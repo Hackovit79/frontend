@@ -1,5 +1,5 @@
 <div class="meetup-form">
-    <h1>Afegir nou event </h1>
+    <h1>Afegir nou esdeveniment </h1>
     <div class="meetupInfo">
         <div class="mainInfo">
             <mat-form-field [ngClass]="{error: noTitle}" >
@@ -11,7 +11,7 @@
                     <!-- <input matInput [matDatepicker]="pickerStart" [(ngModel)]="data.start" required>
                     <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
                     <mat-datepicker #pickerStart></mat-datepicker> -->
-                    <input matInput type="datetime-local" [(ngModel)]="data.start" required [errorState]="noStart">
+                    <input matInput type="datetime-local" [(ngModel)]="data.start" required>
                     
             </mat-form-field>
             <mat-form-field [ngClass]="{error: noEnd}">
@@ -29,7 +29,7 @@
             <div class="container">
                 <input type="file" style="display: none" #fileInput accept="image/*" (change)="onChangeFileInput()" />
                 <button mat-raised-button class="file-select-button" (click)="onClickFileInputButton()">
-                    Seleccion la imatge de l'event
+                    Seleccion la imatge de l'esdeveniment
                     <mat-icon>attach_file</mat-icon>
                 </button>
                 <p class="file-name" *ngIf="!file; else fileName"></p>
