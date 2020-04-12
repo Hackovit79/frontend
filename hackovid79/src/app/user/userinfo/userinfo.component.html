@@ -1,55 +1,58 @@
-<div class="userinfo">
-    <div class="profile">
-        <div style="align-self: center;">
-            <img *ngIf="userPicPath != null" src="{{userPicPath}}" class="profilepic">
+<div class="container">
+    <div class="prof">
+        <div class="div-img">
+            <img *ngIf="userPicPath != null" src="{{userPicPath}}" class="prof-img">
             <button mat-raised-button (click)="onClickFileInputButton()" class="editPicture">
                 <img src="assets/icons/edit.svg">
             </button>
+
         </div>
-        
-        <input type="file" #updatedPic style="display: none;" (change)="onChangeFileInput()">
-        
-        <button mat-raised-button style="margin:5px 0px" class="profilepic" (click)="editInfo()">Editar</button>
-        <button mat-raised-button style="margin:5px 0px " class="profilepic" color="warn" (click)="logout()">Log out</button>
+        <div class="prof-data">
+            <div class="uservalue">
+                <img class="info" src="assets/icons/no_user.svg" style="margin-right: 5px;">
+                <span class="info username">{{user?.username}}</span>
+            </div>
+            <div class="uservalue" *ngIf="!editionMode">
+                <img class="info" src="assets/icons/email_white.svg" style="margin-right: 5px;">
+                <span class="info email">{{user?.email}}</span>
+            </div>
+            <div class="uservalue" *ngIf="!editionMode">
+                <span class="info description">{{user?.description}}</span>
+            </div>
+            <div class="edition">
+                <div *ngIf="editionMode">
+                    <p><img src="assets/icons/email_white.svg" style="margin-right: 5px;"> Email:</p>
+                    <mat-form-field>
+                        <input matInput type="email" [(ngModel)]="editedUser.email">
+                    </mat-form-field>
+                </div>
+                <div *ngIf="editionMode">
+                    <p>Descripció: </p>
+                    <mat-form-field>
+                        <textarea matInput [(ngModel)]="editedUser.description"></textarea>
+                    </mat-form-field>
+                </div>
+                <div *ngIf="editionMode">
+                    <p>Contrasenya: </p>
+                    <mat-form-field>
+                        <input matInput type="password" [(ngModel)]="editedUser.password">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div style="align-self: flex-end;" *ngIf="editionMode">
+                    <button mat-raised-button style="margin:5px 0px" (click)="saveChanges()">Guardar</button>
+                </div>
+                <div style="align-self: flex-end;" *ngIf="editionMode">
+                    <button mat-raised-button style="margin:5px 0px " (click)="cancelEdition()">Descartar</button>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button mat-raised-button *ngIf="!editionMode" style="margin:5px 0px" (click)="editInfo()">Editar</button>
+                <button mat-raised-button style="margin:5px 0px " color="warn" (click)="logout()">Log out</button>
+            </div>
+        </div>
     </div>
-    <div class="uservalues">
-        <div class="uservalue">
-            <img src="assets/icons/no_user.svg" style="margin-right: 5px;">
-            <span class="username">{{user?.username}}</span>
-        </div>
-        <div class="uservalue" *ngIf="!editionMode">
-            <img src="assets/icons/email.svg" style="margin-right: 5px;">
-            <span >{{user?.email}}</span>
-        </div>
-        <div *ngIf="!editionMode">
-            <span >{{user?.description}}</span>
-        </div>
-        <div class="uservalue" *ngIf="editionMode">
-            <img src="assets/icons/email.svg" style="margin-right: 5px;">
-            <mat-form-field>
-                <input matInput type="email" [(ngModel)]="editedUser.email" >
-              </mat-form-field>
-        </div>
-        <div *ngIf="editionMode">
-            <span>Descripció: </span>
-            <mat-form-field>
-                <textarea matInput [(ngModel)]="editedUser.description" ></textarea>
-            </mat-form-field>
-        </div>
-        <div *ngIf="editionMode">
-            <span>Contrasenya: </span>
-            <mat-form-field>
-                <input matInput type="password" [(ngModel)]="editedUser.password" >
-            </mat-form-field>
-        </div>
-        <div style="align-self: flex-end;" *ngIf="editionMode">
-            <button mat-raised-button style="margin:5px 0px" class="profilepic" (click)="saveChanges()">Guardar</button>
-        </div>
-        <div style="align-self: flex-end;" *ngIf="editionMode">
-            <button mat-raised-button style="margin:5px 0px " class="profilepic" (click)="cancelEdition()">Descartar canvis</button>
-        </div>
-
-
-    </div>
-
 </div>
