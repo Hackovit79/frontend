@@ -35,6 +35,8 @@
                                         <a href={{link.url}}><img class="icon" src="assets/icons/logo-other.svg"></a>
                                     </div>
                                 </div>
+                                <a href={{link.url}}><img class="icon" src="assets/icons/logo-youtube.svg"></a>
+                                <a *ngIf="link.platform=='youtube'" href={{link.url}}><img class="icon" src="assets/icons/logo-youtube.svg"></a>
                             </li>
                         </ul>
                     </div>
