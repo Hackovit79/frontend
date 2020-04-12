@@ -28,9 +28,10 @@ sans-serif;
 }
 
 .prof-img {
+    object-fit: cover;
     width: 320px;
+    height: 320px;
     border-radius: 10px;
-    max-height: 400px;
 }
 
 .editPicture {

@@ -19,7 +19,9 @@ sans-serif;
     display: flex;
 }
 .userpic{
-    max-width: 30px;
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
     border-radius: 30%;
     margin-left: 5px;
     border: 2px solid black;
