@@ -63,8 +63,15 @@ export class HomeComponent implements OnInit {
   }
 
   evaluateLiveMeetups(){
-    for(let i =0;i< this.Meetups.length ; i++){
-      // if dates between now
+    for(let meetup of this.Meetups){
+      let meetupStart = new Date(meetup.start)
+      let meetupEnd = new Date(meetup.end)
+      let actualTime = new Date()
+      if ((meetupStart.getTime() < actualTime.getTime()) && (actualTime.getTime() < meetupEnd.getTime())){
+        meetup.isLive = true
+      } else {
+        meetup.isLive = true
+      }
     }
   }
 }
