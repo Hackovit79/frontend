@@ -45,12 +45,23 @@
             </mat-form-field>
             <button style="align-self: flex-end;" mat-raised-button (click)="addLink()" >Afegir link</button>
             <div *ngFor="let link of data.links" class="link">
-                <a *ngIf="link.platform == 'youtube'" href="{{link.url}}" target="_blank" rel="noopener noreferrer">
-                    <img src="assets/icons/logo-youtube.svg" title="{{link.url}}">
+                <div [ngSwitch]="link.platform">
+                    <div *ngSwitchCase="'youtube'">
+                        <a href={{link.url}} target="_blank" ><img class="icon" src="assets/icons/logo-youtube-black.svg" title="{{link.url}}"></a>
+                    </div>
+                    <div *ngSwitchCase="'instagram'">
+                        <a href={{link.url}} target="_blank"><img class="icon" src="assets/icons/logo-instagram-black.svg" title="{{link.url}}"></a>
+                    </div>
+                    <div *ngSwitchDefault>
+                        <a href={{link.url}} target="_blank"><img class="icon" src="assets/icons/logo-other.svg"></a>
+                    </div>
+                </div>
+                <!-- <a *ngIf="link.platform == 'youtube'" href="{{link.url}}" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/icons/logo-youtube-black.svg" title="{{link.url}}">
                 </a>
                 <a *ngIf="link.platform == 'instagram'" href="{{link.url}}" target="_blank" rel="noopener noreferrer">
-                    <img src="assets/icons/logo-instagram.svg" title="{{link.url}}">
-                </a>
+                    <img src="assets/icons/logo-instagram-black.svg" title="{{link.url}}">
+                </a> -->
                 <button mat-button> <img src="assets/icons/delete.svg" (click)="deleteLink(link)"> </button>
             </div>
         </div>

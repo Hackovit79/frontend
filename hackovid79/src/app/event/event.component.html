@@ -5,30 +5,34 @@
                 <span class="day">{{meetup.start | date:'dd/MM/yyyy HH:mm'}}h</span>
             </div>
             <div *ngIf="meetup.isLive" class="live">
-                <span><img class="icon" src="assets/icons/live.svg"></span>
+                <span><img class="icon-live" src="assets/icons/live.svg"></span>
             </div>
             <div class="data">
                 <div class="content">
                     <span class="author">{{meetup.user}}</span>
                     <h1 class="title">{{meetup.title}}</h1>
                     <p class="text">{{meetup.description}}</p>
-                    <div *ngFor="let categoria of meetup.categories">
-                        <span>{{categoria}} </span>
+                    <div class="subcategories">
+                        <div *ngFor="let categoria of meetup.categories" class="subcategorie" style="font-size: 18px;">
+                            <span>{{categoria}} </span>
+                        </div>
                     </div>
-                    <div *ngFor="let subcategoria of meetup.subcategories">
-                        <span>{{subcategoria}} </span>
+                    <div class="subcategories">
+                        <div *ngFor="let subcategoria of meetup.subcategories" class="subcategorie">
+                            <span>#{{subcategoria}} </span>
+                        </div>
                     </div>
                     <div class="links">
                         <ul class="menu-content">
                             <li *ngFor=" let link of meetup?.links ">
                                 <div [ngSwitch]="link.platform">
-                                    <div *ngSwitchCase="(link.platform=='youtube')">
+                                    <div *ngSwitchCase="'youtube'">
                                         <a href={{link.url}} target="_blank"><img class="icon" src="assets/icons/logo-youtube.svg"></a>
                                     </div>
-                                    <div *ngSwitchCase="(link.platform=='google')">
-                                        <a href={{link.url}} target="_blank"><img class="icon" src="assets/icons/logo-youtube.svg"></a>
+                                    <div *ngSwitchCase="'google'">
+                                        <a href={{link.url}} target="_blank"><img class="icon" src="assets/icons/logo-google.svg"></a>
                                     </div>
-                                    <div *ngSwitchCase="(link.platform=='instagram')">
+                                    <div *ngSwitchCase="'instagram'">
                                         <a href={{link.url}} target="_blank"><img class="icon" src="assets/icons/logo-instagram.svg"></a>
                                     </div>
                                     <div *ngSwitchDefault>
