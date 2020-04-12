@@ -20,7 +20,7 @@ export class UsereventsComponent implements OnInit {
   Meetups: Meetup[];
 
   ngOnInit(): void {
-    this.GetAllMeetups();
+    this.GetMeetups();
     // // force reload
     // this.router.routeReuseStrategy.shouldReuseRoute = function() {return true;}
   }
@@ -29,13 +29,14 @@ export class UsereventsComponent implements OnInit {
     const newMeetup:Meetup = new Meetup();
     this.popup = this.dialog.open(AddMeetupComponent,{data:newMeetup});
     this.popup.afterClosed().subscribe((saved:boolean) => {
+      debugger;
       if(saved){
-        this.GetAllMeetups();
+        this.GetMeetups();
       }
     });
   }
 
-  GetAllMeetups(){
+  GetMeetups(){
     this.service.GetMeetupsFiltered(this.auth.getUsernameLoggedIn(), null,null,null).subscribe( (requestedMeetups) => {
       console.log("Meetups: "+ requestedMeetups.items_total);
       if(requestedMeetups.items.length> 0){

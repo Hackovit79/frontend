@@ -33,7 +33,6 @@ export class EventComponent implements OnInit {
 
   deleteMeetup(){
     this.service.DeleteMeetup(this.meetup.id).subscribe((request) =>{
-      debugger;
       this.auth.GoToUserEvents();
     })
   }

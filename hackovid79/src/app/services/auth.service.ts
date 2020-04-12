@@ -61,7 +61,6 @@ export class AuthService {
       this.http.post<{token:  string,text:string, exp:number}>(`${env.ApiUrl}/@login`, {username, password}).
       subscribe(
             (res:{token:  string, exp:number}) =>{
-              debugger;
               localStorage.setItem('access_token', res.token);
               let expDate = new Date()
               expDate.setSeconds(expDate.getSeconds() + res.exp);

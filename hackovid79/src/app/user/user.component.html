@@ -1,19 +1,19 @@
 <div class="user">
     <app-navbar></app-navbar>
-    <mat-tab-group 
-        [selectedIndex]="TabSelected" 
-        (selectedIndexChange)="navigate($event)"
-    >
-        <mat-tab label="Perfil"> 
-            <app-userinfo>
+    <mat-tab-group [selectedIndex]="TabSelected" mat-align-tabs="center" (selectedIndexChange)="navigate($event)">
 
-            </app-userinfo>
+        <mat-tab label="Perfil">
+            <div class="container">
+                <app-userinfo>
+
+                </app-userinfo>
+            </div>
         </mat-tab>
-        <mat-tab label="Events" > 
+        <mat-tab label="Events">
             <app-userevents>
-                
+
             </app-userevents>
         </mat-tab>
-      </mat-tab-group>
-      
+    </mat-tab-group>
+
 </div>

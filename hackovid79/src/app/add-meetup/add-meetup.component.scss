@@ -7,6 +7,9 @@
 .meetupInfo{
     display: flex;
     flex-wrap: wrap;
+    overflow-x: hidden;
+max-height: calc(100vh*0.7);
+overflow-y: auto;
     .mainInfo{
         margin: 0px 10px;
         display: flex;
@@ -17,4 +20,10 @@
     display: flex;
     justify-content: space-between;
     margin: 3px 10px
+}
+
+.error{
+    padding:2px 5px;
+    border: 1px solid red;
+    border-radius: 20px;
 }

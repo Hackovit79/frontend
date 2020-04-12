@@ -2,19 +2,19 @@
     <h1>Afegir nou event </h1>
     <div class="meetupInfo">
         <div class="mainInfo">
-            <mat-form-field >
+            <mat-form-field [ngClass]="{error: noTitle}" >
                 <mat-label>Títol</mat-label>
                 <input matInput [(ngModel)]="data.title" type="text" required>
             </mat-form-field>
-            <mat-form-field >
+            <mat-form-field [ngClass]="{error: noStart}">
                 <mat-label>Inici</mat-label>
                     <!-- <input matInput [matDatepicker]="pickerStart" [(ngModel)]="data.start" required>
                     <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
                     <mat-datepicker #pickerStart></mat-datepicker> -->
-                    <input matInput type="datetime-local" [(ngModel)]="data.start" required>
+                    <input matInput type="datetime-local" [(ngModel)]="data.start" required [errorState]="noStart">
                     
             </mat-form-field>
-            <mat-form-field >
+            <mat-form-field [ngClass]="{error: noEnd}">
                 <mat-label>Final</mat-label>
                     <!-- <input matInput [matDatepicker]="pickerEnd" [(ngModel)]="data.end" required>
                     <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
@@ -38,7 +38,7 @@
                 </ng-template>
             </div>
         </div>
-        <div class="mainInfo" >
+        <div class="mainInfo" [ngClass]="{error: noLinks}">
             <mat-form-field >
                 <mat-label>link</mat-label>
                 <input matInput [(ngModel)]="newUrl" type="text">
@@ -53,7 +53,7 @@
                         <a href={{link.url}} target="_blank"><img class="icon" src="assets/icons/logo-instagram-black.svg" title="{{link.url}}"></a>
                     </div>
                     <div *ngSwitchDefault>
-                        <a href={{link.url}} target="_blank"><img class="icon" src="assets/icons/logo-other.svg"></a>
+                        <a href={{link.url}} target="_blank"><img class="icon" src="assets/icons/link.svg"></a>
                     </div>
                 </div>
                 <!-- <a *ngIf="link.platform == 'youtube'" href="{{link.url}}" target="_blank" rel="noopener noreferrer">

@@ -43,20 +43,41 @@ export class AddMeetupComponent implements OnInit {
   newCategorie:string;
   newSubcategorie:string;
 
+  //errors
+  noTitle:boolean = false;
+  noStart:boolean = false;
+  noEnd:boolean = false;
+  noLinks:boolean;
+
   createMeetup(){
-    debugger;
-    // let reader = new FileReader();
-    // if (this.file != null){
-    //   reader.readAsDataURL(this.file);
-    //    reader.onloadend = (e) => {
-    //     this.data.img = {"data":reader.result};
-    //     this.service.PostMeetup(this.data).subscribe();
-    //     this.dialogRef.close();  
-    //   }
-    // }else{
-    // }
-    this.service.PostMeetup(this.data).subscribe();
-    this.dialogRef.close(true);  
+    // check inputs
+    let errors:boolean = false;
+    this.noTitle = false;
+    this.noStart = false;
+    this.noEnd = false;
+    this.noLinks = false;
+
+    if (this.data.title == ""){
+      this.noTitle = true;
+      errors= true;
+    }
+    if (this.data.start == null){
+      this.noStart = true;
+      errors= true;
+    }
+    if (this.data.end == null){
+      this.noEnd = true;
+      errors= true;
+    }
+    if (this.data.links.length == 0){
+      this.noLinks = true;
+      errors= true;
+    }
+    console.log(errors);
+    if(!errors){
+      this.service.PostMeetup(this.data).subscribe();
+      this.dialogRef.close(true);  
+    }
     
   }
 
@@ -85,13 +106,12 @@ export class AddMeetupComponent implements OnInit {
   // manage links
   addLink(){
     let platform = this.getPlatform(this.newUrl);
-    if (platform != "error"){
-      let newLink: link = new link();
-      newLink.platform = platform;
-      newLink.url = this.newUrl;
-      this.data.links.push(newLink)
-      this.newUrl = "";
-    }
+    let newLink: link = new link();
+    newLink.platform = platform;
+    newLink.url = this.newUrl;
+    this.data.links.push(newLink)
+    this.newUrl = "";
+    
   }
   deleteLink(link){
     let index = this.data.links.indexOf(link);
@@ -105,7 +125,7 @@ export class AddMeetupComponent implements OnInit {
     } else if ( urlLower.includes('instagram') ){
       return "instagram";
     } else{
-      return "error"
+      return "other"
     }
   }
 

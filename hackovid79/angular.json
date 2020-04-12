@@ -63,7 +63,7 @@
               ]
             },
             "production-local":{
-              "baseHref":"/hackovid79/",
+              "baseHref":"/",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
