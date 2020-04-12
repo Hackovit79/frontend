@@ -5,6 +5,8 @@
             <button mat-raised-button (click)="onClickFileInputButton()" class="editPicture">
                 <img src="assets/icons/edit.svg">
             </button>
+            <input type="file" style="display: none" #updatedPic accept="image/*" (change)="onChangeFileInput()" />
+
 
         </div>
         <div class="prof-data">
