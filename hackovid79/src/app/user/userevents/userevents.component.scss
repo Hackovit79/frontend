@@ -1,10 +1,17 @@
-.meetup-list {
+$open-sans: 'Open Sans',
+sans-serif;
+$blacktrans: rgba(0, 0, 0, 0.815);
+.addevent-div {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-        margin-bottom: 20px;
+    width: 100%;
+    justify-content: center;
 }
-.userevents{
-    display: flex;
-    flex-direction: column;
+
+.addevent-btn {
+    background-color: $blacktrans;
+    color: white;
+    width: 300px;
+    height: 50px;
+    font-size: 20px;
+    font-family: $open-sans;
 }
