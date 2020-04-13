@@ -16,18 +16,14 @@ export class NavbarComponent implements OnInit {
   userpic:string
 
   ngOnInit(): void {
+    this.userpic = "assets/user.jpg"
     this.service.GetUserInfo().subscribe((user) =>{
       if (user != null){
         this.username = user.username
         if (user.avatar != null){
           this.userpic = this.service.UrlUserPic();
-        } else{
-        this.userpic = "assets/user.jpg"
-        }
-      } else{
-        this.userpic = "assets/user.jpg"
-      }
-
+        } 
+      } 
     })
   }
 

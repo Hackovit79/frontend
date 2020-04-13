@@ -35,7 +35,7 @@ export class UserinfoComponent implements OnInit {
     const files: { [key: string]: File } = this.updatedPicInput.nativeElement.files;
     this.updatedPic = files[0];
     this.service.UpdateUserPic(this.updatedPic).subscribe((response) =>{
-      this.GetUserInfo();
+      this.GetUserInfo();      
     });
   }
 
@@ -64,6 +64,11 @@ export class UserinfoComponent implements OnInit {
     })
   }
 
+  reloadComponent() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.service.GoToUserInfo();
+}
 
   private GetUserInfo(){
     this.service.GetUserInfo().subscribe((info) => {
